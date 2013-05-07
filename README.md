@@ -1,3 +1,3 @@
-## Mongo Blank
+## The Bearded Wanderer
 
-A blank rails app set up with MongoMapper, RSpec, Capybara, and more. For use in your projects.
+Find Tech meetups in London, create them, see them on a map, add them to your calendar. Hooray.
