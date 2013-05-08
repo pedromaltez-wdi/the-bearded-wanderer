@@ -12,6 +12,7 @@ gem 'rabl'
 gem 'oj'
 gem 'gon'
 gem 'js-routes'
+gem 'genghisapp'
 
 group :development do
   gem "better_errors"

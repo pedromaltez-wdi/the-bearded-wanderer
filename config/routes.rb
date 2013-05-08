@@ -1,4 +1,4 @@
-MongoBlank::Application.routes.draw do
+TheBeardedWanderer::Application.routes.draw do
   
   root :to => 'site#index'
   

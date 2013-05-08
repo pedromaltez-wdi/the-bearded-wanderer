@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-MongoBlank::Application.load_tasks
+TheBeardedWanderer::Application.load_tasks
