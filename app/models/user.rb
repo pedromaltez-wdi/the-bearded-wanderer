@@ -4,6 +4,8 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  attr_accessor :password, :password_confirmation
+
   attr_accessible :email    ,
                   :name     ,
                   :password ,
@@ -20,8 +22,9 @@ class User
   field :code         , type: String
   field :expires_at   , type: DateTime
 
-  validates :email    , presence:    true
-  validates :email    , uniqueness:  true
+  validates :name     , presence:     true
+  validates :email    , presence:     true
+  validates :email    , uniqueness:   true
   validates :password , confirmation: true
 
 
