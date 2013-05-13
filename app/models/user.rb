@@ -9,9 +9,7 @@ class User
   attr_accessible :email    ,
                   :username ,
                   :password ,
-                  :password_confirmation ,
-                  :hashed
-
+                  :password_confirmation
 
   field :username     , type: String
   field :email        , type: String
@@ -52,7 +50,7 @@ class User
   end
 
   def downcase_email
-    self.email.downcase!
+    self.email.downcase! unless email == nil
   end
 
 end

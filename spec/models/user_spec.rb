@@ -7,7 +7,14 @@ describe User do
     expect( create( :user ) ).to be_valid
   end
 
-  it "is invalid without a username"
+  it "is invalid without a username" do
+    expect( build( :user, username: nil ) ).not_to be_valid
+  end
+
+  it "is invalid without an email" do
+    expect( build( :user, email: nil ) ).not_to be_valid
+  end
+
 
   # describe '.new' do
   #   it 'creates a new User instance' do
