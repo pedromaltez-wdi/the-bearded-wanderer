@@ -1,1 +1,14 @@
 <p>There is nothing here!</p>
+
+<%= form_for(@user) do |f| %>
+  <%= f.label :name, "Username" %>
+  <%= f.text_field :name %>
+  <%= f.label :email, "Email" %>
+  <%= f.text_field :email %>
+  <%= f.label "user[password]", "Password" %>
+  <%= password_field_tag "user[password]" %>
+  <%= f.label "user[password_confirmation]", "Confirm Password" %>
+  <%= password_field_tag "user[password_confirmation]" %>
+  <%= f.submit "Submit" %>
+
+<% end %>
