@@ -8,21 +8,26 @@ gem 'rabl'
 gem 'oj'
 gem 'gon'
 gem 'js-routes'
-gem 'genghisapp'
 
 group :development, :test do
   gem "rspec-rails"
-  gem "capybara"
   gem "better_errors"
   gem "binding_of_caller"
   gem "meta_request"
   gem "poltergeist"
   gem "pry"
   gem "rspec-rails"
-  gem "capybara"
-  gem "launchy"
+  gem 'factory_girl_rails'
   gem "database_cleaner"
 end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'guard-rspec'
+end
+
 
 # Gems used only for assets and not required
 # in production environments by default.
