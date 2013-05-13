@@ -7,7 +7,7 @@ describe User do
     expect( create( :user ) ).to be_valid
   end
 
-
+  it "is invalid without a username"
 
   # describe '.new' do
   #   it 'creates a new User instance' do

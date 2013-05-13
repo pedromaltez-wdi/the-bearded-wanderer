@@ -7,13 +7,13 @@ class User
   attr_accessor :password, :password_confirmation
 
   attr_accessible :email    ,
-                  :name     ,
+                  :username ,
                   :password ,
-                  :password_confirmation,
+                  :password_confirmation ,
                   :hashed
 
 
-  field :name         , type: String
+  field :username     , type: String
   field :email        , type: String
 
   field :hashed       , type: String
@@ -22,7 +22,7 @@ class User
   field :code         , type: String
   field :expires_at   , type: DateTime
 
-  validates :name     , presence:     true
+  validates :username , presence:     true
   validates :email    , presence:     true
   validates :email    , uniqueness:   true
   validates :password , confirmation: true
