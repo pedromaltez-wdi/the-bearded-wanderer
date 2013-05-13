@@ -9,3 +9,7 @@
   <%= password_field_tag "user[password_confirmation]" %><br>
   <%= f.submit "Submit" %>
 <% end %>
+
+<% @users.each do |user| %>
+<p> <%= user.name %> </p>
+<% end %>

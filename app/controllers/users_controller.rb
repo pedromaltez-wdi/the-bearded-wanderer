@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     begin
-      @user = User.find(params[:_id])
+      @user = User.find(params[:id])
     rescue
       head :not_found
     end
