@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -15,11 +17,11 @@ class User
   field :salt         , type: String
 
   field :code         , type: String
-  field :expires_at   , type: Timestamp
+  field :expires_at   , type: DateTime
 
   validates :email    , presence:    true
   validates :email    , uniqueness:  true
-  validates :password , confimation: true
+  validates :password , confirmation: true
 
 
   before_validation :downcase_email
@@ -38,15 +40,15 @@ class User
   private
 
   def encrypt_password
-    if password_present?
+    if password.present?
       self.salt = BCrypt::Engine.generate_salt
-      self.hashed = BCrypt::Engine.generate_hash
+      self.hashed = BCrypt::Engine.hash_secret(password, self.salt)
       self.password = nil
     end
   end
 
   def downcase_email
-    email = email.downcase
+    self.email.downcase!
   end
 
 end
