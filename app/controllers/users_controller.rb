@@ -17,7 +17,12 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      render :show
+      if request.xhr?
+        render :show
+      else
+        session[:user_id] = @user.id
+        redirect_to root_url, :notice => "Thanks for registering!"
+      end
     else
       render :errors, status: :unprocessable_entity
     end

@@ -31,8 +31,8 @@ class User
 
 
   def authenticate(password)
-    if user && user.hashed == BCrypt::Engine.hash_secret(password, user.salt)
-      user
+    if self.hashed == BCrypt::Engine.hash_secret(password, self.salt)
+      self
     else
       nil
     end
