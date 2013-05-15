@@ -13,6 +13,10 @@
   <%= f.submit "Register" %>
 <% end %>
 
+<form method="GET" action="/logout">
+  <input type="submit" value="Logout">
+</form>
+
 <%= current_user.username if current_user%>
 
 
