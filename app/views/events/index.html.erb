@@ -1,0 +1,11 @@
+<%= @events.to_s %>
+
+<% @meetups['results'].each do |meetup| %>
+  <ul>
+  <% if meetup.has_key?("venue") %>
+    <li>
+      <%= meetup['venue']['name'] %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

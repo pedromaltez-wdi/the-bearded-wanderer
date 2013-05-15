@@ -8,6 +8,7 @@ gem 'rabl'
 gem 'oj'
 gem 'gon'
 gem 'js-routes'
+gem 'rest-client'
 
 group :development, :test do
   gem "rspec-rails"
