@@ -9,7 +9,8 @@ class User
   attr_accessible :email    ,
                   :username ,
                   :password ,
-                  :password_confirmation
+                  :password_confirmation,
+                  :events
 
   field :username     , type: String
   field :email        , type: String
@@ -20,11 +21,12 @@ class User
   field :code         , type: String
   field :expires_at   , type: DateTime
 
+  has_and_belongs_to_many :events
+
   validates :username , presence:     true
   validates :email    , presence:     true
   validates :email    , uniqueness:   true
   validates :password , confirmation: true
-
 
   before_validation :downcase_email
   before_save       :encrypt_password

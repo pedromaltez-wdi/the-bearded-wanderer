@@ -1,11 +1,25 @@
-<%= @events.to_s %>
 
-<% @meetups['results'].each do |meetup| %>
-  <ul>
-  <% if meetup.has_key?("venue") %>
-    <li>
-      <%= meetup['venue']['name'] %>
-    </li>
+<div id="meetup_meetups_list">
+  <% @meetups['results'].each do |meetup| %>
+    <ul>
+    <% if meetup.has_key?("venue") %>
+      <li>
+        <%= meetup['name'] %>
+      </li>
+      <li>
+        <%= meetup['group']['name'] %>
+      </li>
+      <li>
+        <%= meetup['venue']['name'] %>
+      </li>
+      <li>
+        <%= meetup['time'].to_s.slice(0, 10) %>
+      </li>
+    <% end %>
+    </ul>
   <% end %>
-  </ul>
-<% end %>
+</div>
+
+<div id="user_meetup_list" style="background-color: yellow">
+  <%= current_user.events.to_s %>
+</div>

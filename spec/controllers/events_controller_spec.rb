@@ -10,8 +10,8 @@ describe EventsController do
       expect( assigns( :events ) ).to match_array( [event] )
     end
 
-    it 'renders index.json.rabl' do
-      get :index, format: :json
+    it 'renders index.html.erb' do
+      get :index, format: :html
       expect( response ).to render_template :index
     end
 
