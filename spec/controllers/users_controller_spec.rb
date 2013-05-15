@@ -40,7 +40,7 @@ describe UsersController do
       end
     end
     
-    context "with a non-existant user" do
+    context "with a non-existent user" do
       it "responds with a 404 Not Found status code" do
         get :show, id: "-1", format: :json
         expect( response.response_code ).to eq 404

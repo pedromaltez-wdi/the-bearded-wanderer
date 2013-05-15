@@ -4,6 +4,11 @@ TheBeardedWanderer::Application.routes.draw do
   # get 'home' => 'site#home'
   post '/login' => 'site#login'
   get '/logout' => 'site#logout'
+  
+  resources :events, defaults: { format: :json }
+
+
   root :to => 'site#index'
   
+
 end
