@@ -21,9 +21,40 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <%= render 'layouts/navigation' %>
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">The Bearded Wanderer</a></h1>
+        </li>
+    <section class="top-bar-section">
+     <!-- Left Nav Section -->
+      <ul class="left">
+         <li class="divider"></li>
+         <%= nav_link 'Home', root_path %>
+          <li class="divider"></li>
+          <%= nav_link 'Your events list', events_path %>
+         <li class="divider"></li>
+       </ul>
+    </section>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+    </nav>
+    <div class="row">
+      <div class="small-6 small-centered columns">
+        <% if flash[:notice] %>
+          <div data-alert class="alert-box">
+          <%= flash[:notice] %>
+          <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
+    <% if flash[:error] %>
+      <div data-alert class="alert-box alert">
+    <%= flash[:error] %>
+      <a href="#" class="close">&times;</a>
+      </div>
+    <% end %>
+
         
       </nav>
     </header>
