@@ -14,5 +14,13 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
+//= require_tree ./vendor
 
 $(function(){ $(document).foundation(); });
+
+
+$.backstretch([
+      "../assets/lgu-test.jpg"
+    , "../assets/lsub-test.jpg"
+    , "../assets/ltunnel-test.jpg"
+  ], {duration: 10000, fade: 750});
