@@ -1,9 +1,9 @@
 <div class="row">
 
   <div id="meetup_meetups_list" class="small-6 columns">
-    <% @meetups['results'].each do |meetup| %>
-      <div class="meet">
-        <ul>
+    <ol class=" simple_with_animation vertical">
+      <% @meetups['results'].each do |meetup| %>
+        <div class="meet">
           <% if meetup.has_key?("venue") %>
             <li class="event-name">
               <%= meetup['name'] %>
@@ -18,16 +18,30 @@
               <%= (meetup['time']) %>
             </li>
           <% end %>
-        </ul>
-      </div>
-    <% end %>
+        </div>
+      <% end %>
+    </ol>
   </div>
 
-    <% if current_user %>
-      <div id="user_meetup_list" class="small-6 columns" style="background-color: yellow">
-        <%= current_user.events.to_s %>
-      </div>
+  <div id="meetup_meetups_list" class="small-6 columns">
+    <ol class=" simple_with_animation vertical">
+      <% @meetups['results'].each do |meetup| %>
+        <div class="meet">
+          <% if meetup.has_key?("venue") %>
+            <li class="event-name">
+              <%= meetup['name'] %>
+            </li>
+            <li class="event-group">
+              <%= meetup['group']['name'] %>
+            </li>
+            <li class="event-venue">
+              <%= meetup['venue']['name'] %>
+            </li>
+            <li class="event-time">
+              <%= (meetup['time']) %>
+            </li>
+          <% end %>
+        </div>
     <% end %>
-
+  </ol>
 </div>
-
