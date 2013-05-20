@@ -1,7 +1,7 @@
 
 <div id="meetup_meetups_list">
   <% @meetups['results'].each do |meetup| %>
-  <div class="meet small-6 columns left">
+  <div class="meet small-6 columns">
     <ul>
     <% if meetup.has_key?("venue") %>
       <li>
@@ -14,7 +14,7 @@
         <%= meetup['venue']['name'] %>
       </li>
       <li>
-        <%= meetup['time'].to_s.slice(0, 10) %>
+        <%= Time.at(meetup['time'].to_s.slice(0, 10).to_f) %>
       </li>
     <% end %>
     </ul>
