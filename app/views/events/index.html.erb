@@ -1,32 +1,33 @@
 <div class="row">
+
   <div id="meetup_meetups_list" class="small-6 columns">
     <% @meetups['results'].each do |meetup| %>
-    <div class="meet">
-      <ul>
-      <% if meetup.has_key?("venue") %>
-        <li>
-          <%= meetup['name'] %>
-        </li>
-        <li>
-          <%= meetup['group']['name'] %>
-        </li>
-        <li>
-          <%= meetup['venue']['name'] %>
-        </li>
-        <li>
-          <%= Time.at(meetup['time'].to_s.slice(0, 10).to_f) %>
-        </li>
-      <% end %>
-      </ul>
-    </div>
+      <div class="meet">
+        <ul>
+          <% if meetup.has_key?("venue") %>
+            <li class="event-name">
+              <%= meetup['name'] %>
+            </li>
+            <li class="event-group">
+              <%= meetup['group']['name'] %>
+            </li>
+            <li class="event-venue">
+              <%= meetup['venue']['name'] %>
+            </li>
+            <li class="event-time">
+              <%= (meetup['time']) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
   </div>
 
     <% if current_user %>
-    <div id="user_meetup_list" class="small-6 columns" style="background-color: yellow">
-      <%= current_user.events.to_s %>
-    </div>
-  <% end %>
-  
+      <div id="user_meetup_list" class="small-6 columns" style="background-color: yellow">
+        <%= current_user.events.to_s %>
+      </div>
+    <% end %>
+
 </div>
 

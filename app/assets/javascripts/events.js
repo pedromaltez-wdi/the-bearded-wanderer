@@ -2,5 +2,11 @@
 // All this logic will automatically be available in application.js.
 
 $(function() {
-    $( ".meet" ).draggable();
-  });
+  $( ".meet" ).draggable();
+
+  var eventTimes = $('.event-time')
+  for (i = 0; i < eventTimes.length; ++i) {
+    var eventTime = parseInt($(eventTimes[i]).text());
+    $(eventTimes[i]).html(moment(eventTime).format('DD/MM/YYYY, H:mm'));
+  };
+});
