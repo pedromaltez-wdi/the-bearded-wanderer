@@ -20,7 +20,9 @@ class EventsController < ApplicationController
     end
   end
 
-
+  def meetup_api
+    @meetups = meetups
+  end
 
   protected
 

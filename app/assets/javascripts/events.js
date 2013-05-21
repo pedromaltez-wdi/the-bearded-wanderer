@@ -10,41 +10,83 @@ $(function() {
     $(eventTimes[i]).html(moment(eventTime).format('DD/MM/YYYY, H:mm'));
   };
 
-  var adjustment
+  // var update = function(id, droparea) {
+  //   console.log(id);
+  //   console.log(droparea);
+  //   switch(droparea) {
+  //     case 'dropzone';
+  //       droppers[id] = draggers[id];
+  //       delete draggers[id];
+  //       break;
+  //     case 'dropzone';
+  //       draggers[id] = droppers[id];
+  //       delete droppers[id];
+  //       break;
+  //   }
+  // };
+
+
+  var adjustment;
+
+
+  $("#origin").sortable({connectWith: "#drop"});
+
+  $("#drop").sortable({connectWith: "#origin"});
+
 
   $("ol.simple_with_animation").sortable({
+
     group: 'simple_with_animation',
     pullPlaceholder: false,
+    
+
     // animation on drop
     onDrop: function  (item, targetContainer, _super) {
-      var clonedItem = $('<li/>').css({height: 0})
-      item.before(clonedItem)
-      clonedItem.animate({'height': item.height()})
+      update(item.data('value'), targetContainer.el[0].id)
+
+      var clonedItem = $('<li/>').css({height: 0});
+      item.before(clonedItem);
+      clonedItem.animate({'height': item.height()});
       
       item.animate(clonedItem.position(), function  () {
-        clonedItem.detach()
-        _super(item)
-      })
-    },
+        clonedItem.detach();
 
-    // set item relative to cursor position
-    onDragStart: function ($item, container, _super) {
-      var offset = $item.offset(),
-      pointer = container.rootGroup.pointer
-
-      adjustment = {
-        left: pointer.left - offset.left,
-        top: pointer.top - offset.top
-      }
-
-      _super($item, container)
-    },
-    onDrag: function ($item, position) {
-      $item.css({
-        left: position.left - adjustment.left,
-        top: position.top - adjustment.top
+        _super(item);
       })
     }
+
+    // // set item relative to cursor position
+    // onDragStart: function ($item, container, _super) {
+    //   var offset = $item.offset(),
+    //   pointer = container.rootGroup.pointer
+
+    //   adjustment = {
+    //     left: pointer.left - offset.left,
+    //     top: pointer.top - offset.top
+    //   }
+
+    //   _super($item, container)
+    // },
+    // onDrag: function ($item, position) {
+    //   $item.css({
+    //     left: position.left - adjustment.left,
+    //     top: position.top - adjustment.top
+    //   })
+    // }
   })
+
+  // $.getJSON( url: 'events.json', function(data) {
+  //   var meetup_data = [];
+
+  //   $.each(data, function(key, val) {
+  //     meetup_data.push('')
+
+  //   });
+
+  // });
+
+
+
+
 
 });

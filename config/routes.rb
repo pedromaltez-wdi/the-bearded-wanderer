@@ -5,6 +5,7 @@ TheBeardedWanderer::Application.routes.draw do
   post '/login' => 'site#login'
   get '/logout' => 'site#logout'
   
+  get 'events/meetup_api' => 'events#meetup_api', defaults: { format: :json }
   resources :events, defaults: { format: :json }
 
 
