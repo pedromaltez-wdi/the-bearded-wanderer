@@ -6,10 +6,6 @@ class EventsController < ApplicationController
 
     @meetups = meetups
 
-    # respond_to do |format|
-    #   format.html  # index.html.erb
-    #   format.json  { render :json => @events }
-    # end
   end
 
   def show
@@ -35,13 +31,18 @@ class EventsController < ApplicationController
         'city' => 'London',
         'category' => 34,
         'zip' => 'EC1R 5DF',
-        'page' => 10,
+        'page' => 4,
         'key' => '4a10285e45445e77313a62f737c275d',
         'text_format' => 'plain'
-      }, :content_type => :json, :accept => :json
+      }, :content_type => "application/json; charset=utf-8", :accept => :json
     }
-    response = JSON.parse(response.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: ''))
-    response['results']
+
+    response = response.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: '')
+    response = JSON.parse(response)['results']
+    response = response.to_json
+    response
   end
+
+
 
 end

@@ -75,18 +75,35 @@ $(function() {
     // }
   })
 
-  // $.getJSON( url: 'events.json', function(data) {
+  // $.getJSON( url: 'meetup_api.json', function(data) {
   //   var meetup_data = [];
 
   //   $.each(data, function(key, val) {
-  //     meetup_data.push('')
+  //     meetup_data.push('key')
 
   //   });
 
   // });
 
 
+// 
+//  PUT DATA HERE
+// 
 
+    
+
+
+      var tryers = $.getJSON( 'meetup_api.json', function(data) {
+        var meetup_data = [];
+
+        $.each(data, function(key, val) {
+          meetup_data.push('key')
+        });
+      });
+
+// 
+// 
+// 
 
 
 });
