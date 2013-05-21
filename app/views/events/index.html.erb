@@ -2,7 +2,7 @@
 
   <div id="meetup_meetups_list" class="small-6 columns">
     <ol class=" simple_with_animation vertical">
-      <% @meetups['results'].each do |meetup| %>
+      <% @meetups.each do |meetup| %>
         <div class="meet">
           <% if meetup.has_key?("venue") %>
             <li class="event-name">
@@ -25,7 +25,7 @@
 
   <div id="meetup_meetups_list" class="small-6 columns">
     <ol class=" simple_with_animation vertical">
-      <% @meetups['results'].each do |meetup| %>
+      <% @meetups.each do |meetup| %>
         <div class="meet">
           <% if meetup.has_key?("venue") %>
             <li class="event-name">

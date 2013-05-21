@@ -38,7 +38,8 @@ class EventsController < ApplicationController
         'text_format' => 'plain'
       }, :content_type => :json, :accept => :json
     }
-    JSON.parse(response)
+    response = JSON.parse(response.encode('UTF-8', 'binary', invalid: :replace, undef: :replace, replace: ''))
+    response['results']
   end
 
 end
