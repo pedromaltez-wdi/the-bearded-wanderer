@@ -31,7 +31,7 @@ class EventsController < ApplicationController
           'city' => 'London',
           'category' => 34,
           'zip' => 'EC1R 5DF',
-          'page' => 4,
+          'page' => 10,
           'key' => '4a10285e45445e77313a62f737c275d',
           'text_format' => 'plain'
         }, :content_type => "application/json; charset=utf-8", :accept => :json
