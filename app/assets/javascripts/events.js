@@ -93,11 +93,19 @@ $(function() {
         console.log(data);
 
         $.each(data, function(key, value) {
+          var venueName = "empty name";
+          if (value.venue) {
+              venueName = value.venue.name
+          }
+         
+
+          
           $('#origin').append("<div>" + 
                                 "<li class='event-name'> name:" + key + value.name + "</li>" +
                                 "<li class='event-group'> group:" + value.group.name + "</li>" +
-     if (value.venue.name !== undefined)   {    "<li class='event-venue'> venue:" + value.venue.name + "</li>" +};
+                                "<li class='event-venue'> venue:" + venueName + "</li>" +
                                 "<li class='event-time'>" + value.time + "</li>" +
+                                "<li class='event-url'><a href=" + value.event_url + "> Meetup Url</a></li>" +
                               "</div>");
         });
         // meetup_data = [];
