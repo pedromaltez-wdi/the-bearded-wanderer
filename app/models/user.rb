@@ -43,18 +43,16 @@ class User
 
   private
 
-  def encrypt_password
-    if password.present?
-      self.salt = BCrypt::Engine.generate_salt
-      self.hashed = BCrypt::Engine.hash_secret(password, self.salt)
-      self.password = nil
+    def encrypt_password
+      if password.present?
+        self.salt = BCrypt::Engine.generate_salt
+        self.hashed = BCrypt::Engine.hash_secret(password, self.salt)
+        self.password = nil
+      end
     end
-  end
 
-  def downcase_email
-    self.email.downcase! unless email == nil
-  end
+    def downcase_email
+      self.email.downcase! unless email == nil
+    end
 
 end
-
-

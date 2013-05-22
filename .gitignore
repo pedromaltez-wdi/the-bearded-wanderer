@@ -17,3 +17,5 @@ pickle-email-*.html
 *secret_token.rb
 .meetupapikey
 .ruby-version
+/bin
+.DS_Store
