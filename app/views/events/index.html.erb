@@ -1,18 +1,14 @@
-
 <div class="row">
 
   <div class="span4 small-6 columns">
-    <ol id="origin" class="meetup-lists simple_with_animation vertical">
-
-    </ol>
+    <ul id="event-list" class="sortable">
+      <li>Loading events...</li>
+    </ul>
   </div>
 <% if current_user %>
   <div class="span4 small-6 columns">
-    <ol id="drop" class="meetup-lists simple_with_animation vertical">
-      <div class="user_meet_list">
-
-      </div>
-    </ol>
+    <ul id="user-list" class="sortable">
+    </ul>
   </div>
 <% end %>
 </div>
