@@ -2,6 +2,9 @@ class Event
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  # attr_accessible :lololol, :name
+  # attr_accessor :lololol, :name
+  field :meetup_id    , type: String
   field :name         , type: String
   field :loc_name     , type: String
   field :lon          , type: Integer
@@ -13,8 +16,8 @@ class Event
 
   has_and_belongs_to_many :users
 
-  validates :name, presence: true
-  validates :description, presence: true
-  validates :link, presence: true
+  # validates :name, presence: true
+  # validates :description, presence: true
+  # validates :link, presence: true
 
 end

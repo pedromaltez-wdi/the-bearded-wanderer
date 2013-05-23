@@ -11,40 +11,16 @@ li {
   list-style: none;
 }
 
-body.dragging, body.dragging * {
-  cursor: move !important;
-}
-
-.dragged {
-  position: absolute;
-  
-  z-index: 2000;
-}
-
-ol.example li.placeholder {
-  position: relative;
-  /** More li styles **/
-}
-
-ol.example li.placeholder:before {
-  position: absolute;
-  /** Define arrowhead **/
-}
-
 .sortable {
   min-height: 300px;
   background-color: yellow;
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-
-  // first-child {
-  //   background-color: red;
-  // }
+  padding-top: 0.2em auto;
+  margin-top: 1em;
 
   li {
     margin: 0.1em;
-
-    padding-left: 0.2em;
+    border-radius: 0.6em;
+    padding: 0.3em 0em 0.4em 0.6em;
     
     &:first-child{
       margin-top: 0;
@@ -53,15 +29,17 @@ ol.example li.placeholder:before {
     &:last-child{
       margin-bottom: 0;
     }
+  }
 
+  p {
+    margin-bottom:0;
   }
 
   .ui-sortable-helper {
     background-color: red;
     opacity: 0.5;
-  }
-
-  p {
-    margin-bottom:0;
+    cursor: move !important;
+    z-index: 2000;
+    position: absolute;
   }
 }

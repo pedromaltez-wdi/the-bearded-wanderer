@@ -53,9 +53,11 @@ $(function() {
           console.log('dropped into user list');
           console.log($(element[0]).data('event-id'));
 
-          $.ajax({
-
-          });
+          var meetupId = $(element[0]).data('event-id');
+          $.ajax( { url: "/events/nomz",
+            data: JSON.stringify({id : meetupId}),
+            type: "PUT",
+            contentType: "application/json" } );
         }
       }
     }).disableSelection();

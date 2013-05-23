@@ -20,6 +20,47 @@ class EventsController < ApplicationController
     @meetups = meetups
   end
 
+  def nomz
+    meetup_id = params[:id]
+    puts
+    puts
+    puts
+    puts    
+    puts meetup_id
+    puts
+    puts
+    puts
+    puts
+
+    newevent = Event.new(meetup_id: meetup_id)
+    newevent.save
+
+    puts
+    puts
+    puts
+    puts 'SUCCESS'
+    puts
+    puts
+    puts
+
+    # nomzfile.save
+    
+    puts
+    puts
+    puts
+    puts 'HAI'
+    puts
+    puts
+    puts
+    puts
+
+
+
+
+    render '/events/index'
+  end
+
+
   protected
 
     def meetups
