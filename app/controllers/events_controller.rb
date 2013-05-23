@@ -22,40 +22,12 @@ class EventsController < ApplicationController
 
   def nomz
     meetup_id = params[:id]
-    puts
-    puts
-    puts
-    puts    
-    puts meetup_id
-    puts
-    puts
-    puts
-    puts
-
-    newevent = Event.new(meetup_id: meetup_id)
-    newevent.save
-
-    puts
-    puts
-    puts
-    puts 'SUCCESS'
-    puts
-    puts
-    puts
-
-    # nomzfile.save
-    
-    puts
-    puts
-    puts
-    puts 'HAI'
-    puts
-    puts
-    puts
-    puts
-
-
-
+    if Event.where(meetup_id: meetup_id).exists?
+      current_user.events << Event.where(meetup_id: meetup_id)
+    else
+      newevent = Event.new(meetup_id: meetup_id)
+      newevent.save
+    end
 
     render '/events/index'
   end
@@ -63,7 +35,7 @@ class EventsController < ApplicationController
 
   protected
 
-    def meetups
+    def meetups( page = 10 )
       # RMeetup::Client.api_key = "145368d59141781a514078586d19"
       # return RMeetup::Client.fetch(:events,{:zip => "EC1R 5DF"})
       response = RestClient.get 'https://api.meetup.com/2/open_events?', {
@@ -72,7 +44,7 @@ class EventsController < ApplicationController
           'city' => 'London',
           'category' => 34,
           'zip' => 'EC1R 5DF',
-          'page' => 10,
+          'page' => page,
           'key' => '4a10285e45445e77313a62f737c275d',
           'text_format' => 'plain'
         }, :content_type => "application/json; charset=utf-8", :accept => :json
@@ -84,6 +56,14 @@ class EventsController < ApplicationController
       response
     end
 
+    def meetup_detail(id)
+      response = RestClient.get "https://api.meetup.com/2/event/#{id}", {
+        :params => {
+          'key' => '4a10285e45445e77313a62f737c275d',
+          'text_format' => 'plain'
+        }, :content_type => "application/json; charset=utf-8", :accept => :json
+      }
+    end
 
 
 end

@@ -2,8 +2,6 @@ class Event
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  # attr_accessible :lololol, :name
-  # attr_accessor :lololol, :name
   field :meetup_id    , type: String
   field :name         , type: String
   field :loc_name     , type: String
