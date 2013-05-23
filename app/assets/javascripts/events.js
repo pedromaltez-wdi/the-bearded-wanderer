@@ -2,9 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 $(function() {
-  // $( ".meet" ).draggable();
-
-
 
   // var update = function(id, droparea) {
   //   console.log(id);
@@ -21,24 +18,20 @@ $(function() {
   //   }
   // };
 
-
   var adjustment;
-
 
   $("#origin").sortable({connectWith: "#drop"});
 
   $("#drop").sortable({connectWith: "#origin"});
-
 
   $("ol.simple_with_animation").sortable({
 
     group: 'simple_with_animation',
     pullPlaceholder: false,
     
-
     // animation on drop
     onDrop: function  (item, targetContainer, _super) {
-      update(item.data('value'), targetContainer.el[0].id)
+      update(item.data('value'), targetContainer.el[0].id);
 
       var clonedItem = $('<li/>').css({height: 0});
       item.before(clonedItem);
@@ -48,7 +41,7 @@ $(function() {
         clonedItem.detach();
 
         _super(item);
-      })
+      });
     }
 
     // // set item relative to cursor position
@@ -69,25 +62,11 @@ $(function() {
     //     top: position.top - adjustment.top
     //   })
     // }
-  })
+  });
 
-  // $.getJSON( url: 'meetup_api.json', function(data) {
-  //   var meetup_data = [];
-
-  //   $.each(data, function(key, val) {
-  //     meetup_data.push('key')
-
-  //   });
-
-  // });
-
-
-// 
-//  PUT DATA HERE
-// 
-
-      
-
+      /////////////////////////////////////////////////////////
+      // Get JSON from Meetup API through own front-end hack //
+      /////////////////////////////////////////////////////////
 
       $.getJSON('/events/meetup_api.json', function(data) {
         console.log(data);
@@ -96,49 +75,30 @@ $(function() {
           var venueName = "empty name";
 
           if (value.venue) {
-              venueName = value.venue.name
+              venueName = value.venue.name;
           }
-         
 
-          
+          ////////////////////////////////////////
+          // Create Meetup event list from JSON //
+          ////////////////////////////////////////
+
           $('#origin').append("<div>" + 
-                                "<li class='event-name'> name:" + value.name + "</li>" +
+                                "<li class='event-url event-name'><a target='_blank' href='" + value.event_url + "'>" + value.name + "</a></li>" +
                                 "<li class='event-group'> group:" + value.group.name + "</li>" +
                                 "<li class='event-venue'> venue:" + venueName + "</li>" +
                                 "<li class='event-time'>" + value.time + "</li>" +
-                                "<li class='event-url'><a href='" + value.event_url + "''> Meetup Url</a></li>" +
                               "</div>");
         });
-        // meetup_data = [];
 
-        // $.each(data, function(key, val) {
-        //   meetup_data.push(val);
-        // });
+        /////////////////////////////////////
+        // Change UNIX time with moment.js //
+        /////////////////////////////////////
 
-        // list_items = [];
-
-        // $.each(meetup_data, function(index, meetup) {
-        //   var list_item = "<div>" + "<li>" + meetup.name + "</li>" + "</div>"
-        //   list_items.push(list_item);
-        // });
-
-        // list_items .appendTo('#origin');
-
-  var eventTimes = $('.event-time')
-  for (i = 0; i < eventTimes.length; ++i) {
-    var eventTime = parseInt($(eventTimes[i]).text());
-    $(eventTimes[i]).html(moment(eventTime).format('DD/MM/YYYY, H:mm'));
-  };
-
-
+        var eventTimes = $('.event-time');
+        for (var i = 0; i < eventTimes.length; ++i) {
+          var eventTime = parseInt($(eventTimes[i]).text());
+          $(eventTimes[i]).html(moment(eventTime).format('DD/MM/YYYY, H:mm'));
+        }
       });
-
-
-
-
-// 
-// 
-// 
-
 
 });

@@ -1,3 +1,4 @@
+
 <div class="row">
 
   <div class="span4 small-6 columns">
@@ -5,7 +6,7 @@
 
     </ol>
   </div>
-
+<% if current_user %>
   <div class="span4 small-6 columns">
     <ol id="drop" class="meetup-lists simple_with_animation vertical">
       <div class="user_meet_list">
@@ -13,57 +14,5 @@
       </div>
     </ol>
   </div>
-</div>
-
-
-
-<div id="newstuff">
-
-  <div class='small-6 columns'>
-    <ol id="dragzone" class='meet simple_with_animation vertical'>
-      <li data-value="1">Item 1</li>
-      <li data-value="2">Item 2</li>
-      <li data-value="3">Item 3</li>
-      <li data-value="4">Item 4</li>
-      <li data-value="5">Item 5</li>
-      <li data-value="6">Item 6</li>
-    </ol>
-  </div>
-
-  <div class='small-6 columns'>
-    <ol id="dropzone" class='meet simple_with_animation vertical'>
-      <li data-value="7" class='highlight'>Item 7</li>
-      <li data-value="8" class='highlight'>Item 8</li>
-      <li data-value="9" class='highlight'>Item 9</li>
-      <li data-value="10" class='highlight'>Item 10</li>
-      <li data-value="11" class='highlight'>Item 11</li>
-      <li data-value="12" class='highlight'>Item 12</li>
-    </ol>
-  </div>
-  
-</div>
-
-
-
-<div id="put-data-here">
-  <script type="text/javascript">
-
-  </script>
-</div>
-
-
-<div id="some-data-here">
-  <script type="text/javascript">
-      var draggers = {
-        1: { name: "Item 1", datetime: new Date(2013, 5, 13) },
-        2: { name: "Item 2", datetime: new Date(2013, 5, 14) },
-        3: { name: "Item 3", datetime: new Date(2013, 5, 15) },
-        4: { name: "Item 4", datetime: new Date(2013, 5, 16) },
-        5: { name: "Item 5", datetime: new Date(2013, 5, 17) },
-        6: { name: "Item 6", datetime: new Date(2013, 5, 18) },
-      };
-
-      var droppers = { 
-      };
-  </script>
+<% end %>
 </div>

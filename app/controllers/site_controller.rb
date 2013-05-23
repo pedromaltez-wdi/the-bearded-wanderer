@@ -2,6 +2,9 @@ class SiteController < ApplicationController
   def index
     @new_user = User.new
     @users = User.all
+
+    redirect_to events_path if current_user
+
   end
 
 
