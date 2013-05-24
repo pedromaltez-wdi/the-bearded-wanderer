@@ -22,12 +22,13 @@ class EventsController < ApplicationController
 
   def nomz
     meetup_id = params[:id]
-    if Event.where(meetup_id: meetup_id).exists?
-      current_user.events << Event.where(meetup_id: meetup_id)
-    else
+
+    unless Event.where(meetup_id: meetup_id).exists?
       newevent = Event.new(meetup_id: meetup_id)
       newevent.save
     end
+      
+    current_user.events << Event.where(meetup_id: meetup_id)
 
     render '/events/index'
   end
