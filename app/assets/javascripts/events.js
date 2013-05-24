@@ -12,7 +12,7 @@ $(function() {
     $('#event-list').html("");
 
     $.each(data, function(key, value) {
-      var venueName = "empty name";
+      var venueName = "Only ninjas can find this place!";
 
       if (value.venue) {
           venueName = value.venue.name;
@@ -24,8 +24,8 @@ $(function() {
 
       $('#event-list').append("<li class='meet' data-event-id='" + value.id + "' data-event-name='" + value.name + "' data-event-link='" + value.event_url + "' data-event-group='" + value.group.name + "' data-event-venue='" + venueName + "' data-event-time='" + value.time + "'>" + 
                                 "<p class='event-url event-name'><a target='_blank' href='" + value.event_url + "'>" + value.name + "</a></p>" +
-                                "<p class='event-group'> group:" + value.group.name + "</p>" +
-                                "<p class='event-venue'> venue:" + venueName + "</p>" +
+                                "<p class='event-group'>" + value.group.name + "</p>" +
+                                "<p class='event-venue'>" + venueName + "</p>" +
                                 "<p class='event-time'>" + value.time + "</p>" +
                               "</li>");
 
