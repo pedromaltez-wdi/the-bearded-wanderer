@@ -18,16 +18,28 @@ class EventsController < ApplicationController
 
   def meetup_api
     @meetups = meetups
+    render :json => meetups
   end
 
   def nomz
     meetup_id = params[:id]
+    meetup_name = params[:name]
+    meetup_venue = params[:venue]
+    meetup_group = params[:group]
+    meetup_link = params[:link]
+    meetup_time = params[:time]
 
     unless Event.where(meetup_id: meetup_id).exists?
-      newevent = Event.new(meetup_id: meetup_id)
+      newevent = Event.new({meetup_id: meetup_id,
+                                 name: meetup_name,
+                                 venue: meetup_venue,
+                                 link: meetup_link,
+                                 group: meetup_group,
+                                 happens_at: meetup_time
+                                })
       newevent.save
     end
-      
+
     current_user.events << Event.where(meetup_id: meetup_id)
 
     render '/events/index'
@@ -56,15 +68,5 @@ class EventsController < ApplicationController
       response = response.to_json
       response
     end
-
-    def meetup_detail(id)
-      response = RestClient.get "https://api.meetup.com/2/event/#{id}", {
-        :params => {
-          'key' => '4a10285e45445e77313a62f737c275d',
-          'text_format' => 'plain'
-        }, :content_type => "application/json; charset=utf-8", :accept => :json
-      }
-    end
-
 
 end
