@@ -22,11 +22,11 @@ li {
     border-radius: 0.6em;
     padding: 0.3em 0em 0.4em 0.6em;
     
-    &:first-child{
+    &:first-child {
       margin-top: 0;
     }
 
-    &:last-child{
+    &:last-child {
       margin-bottom: 0;
     }
   }
@@ -41,5 +41,8 @@ li {
     cursor: move !important;
     z-index: 2000;
     position: absolute;
+  }
+  .ui-sortable-placeholder {
+    height: 30px;
   }
 }
